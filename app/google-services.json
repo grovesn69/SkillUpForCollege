@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "789218134244",
+    "project_id": "sportapp-5c362",
+    "storage_bucket": "sportapp-5c362.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789218134244:android:d0120689f67479da2c04f1",
+        "android_client_info": {
+          "package_name": "com.example.app_for_college"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789218134244-pf1iotv0oacn0kg1glj9adeg8k3s64su.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgShj7BvHWo6o6sPaB8DlCourYmaUrmeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789218134244-pf1iotv0oacn0kg1glj9adeg8k3s64su.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
