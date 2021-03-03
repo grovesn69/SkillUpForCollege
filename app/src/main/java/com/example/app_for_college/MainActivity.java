@@ -21,11 +21,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private TextView register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,5 +52,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void ForgotPassword(View v){
+        Intent i = new Intent(this, ForgotPassword.class);
+        startActivity(i);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.forgotPassword:
+                startActivity(new Intent(this, sign_up.class));
+                break;
+        }
+    }
 }
 
