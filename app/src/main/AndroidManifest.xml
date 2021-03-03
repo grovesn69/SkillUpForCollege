@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_For_College">
-        <activity android:name=".sign_up"></activity>
+        <activity android:name=".ForgotPassword"></activity>
+        <activity android:name=".sign_up" />
         <activity android:name=".SkillData" />
         <activity android:name=".AddSkill" />
         <activity android:name=".GoToHome" />

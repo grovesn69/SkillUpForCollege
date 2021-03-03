@@ -46,9 +46,11 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.google.firebase:firebase-auth'      // Add the dependancy for authentication - Gwen
+
     implementation 'com.google.android.gms:play-services-fitness:20.0.0'        //Gwen added these implementations to support integration with Google Fit 25/02/21
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
     implementation 'com.jjoe64:graphview:4.2.2'             // Supports graphing {DC}
-
 }
