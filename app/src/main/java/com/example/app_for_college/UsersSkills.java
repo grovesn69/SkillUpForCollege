@@ -20,6 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 
 //USE THIS ACTIVITY INSTEAD OF GOTOHOME
 
+//I think onCreate can be changed added to where I left comments, to display skills the user put in previously.
+//That might not work for dynamic buttons though.
+//User class probably needs to have something added to handle skills? Atm just holds name and email.
+//Separate method might be needed for displaying skills right after there added, rather when activity is started.
+//Gwen
+
 public class UsersSkills extends AppCompatActivity {
 
     private FirebaseUser user;
@@ -47,12 +53,12 @@ public class UsersSkills extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
 
-                if (userProfile != null){
+                if (userProfile != null){           //This chunk can pull anything stored in a User class from the database.
 
                     String fullName = userProfile.userName;
                     String email = userProfile.userEmail;
 
-                    usersName.setText(fullName);
+                    usersName.setText(fullName);        //This can be replicated to put skill names on buttons.
                 }
             }
 
@@ -71,7 +77,7 @@ public class UsersSkills extends AppCompatActivity {
         Intent i = new Intent(this, AddSkill.class);
         startActivity(i);
     }
-    public void SkillData(View v) {
+    public void SkillData(View v) {                         //Gwen deleted button that leads here. When Niall dynamically creates buttons might go here?
         Intent in = new Intent(this, SkillData.class);
         String message = ((EditText) findViewById(R.id.SkillTextOne)).getText().toString();
         in.putExtra("Pass", message);
