@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+//NEEDS TO STORE SKILLS WITHIN EACH USER BRANCH.
 
 public class AddSkill extends AppCompatActivity {
 
@@ -27,7 +28,6 @@ public class AddSkill extends AppCompatActivity {
         setContentView(R.layout.activity_add_skill);
         setTitle("Add Skill");
         Intent i = getIntent();
-
 
     }
 
