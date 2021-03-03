@@ -8,11 +8,12 @@
 
     <Button
         android:id="@+id/LogInButton"
-        android:layout_width="96dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:onClick="GoToHome"
+        android:layout_width="98dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="60dp"
+        android:onClick="LogInMain"
         android:text="Log In"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.693"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,12 +32,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/NameText"
+        android:id="@+id/EmailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,27 +47,25 @@
         android:id="@+id/PasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
-        android:layout_marginLeft="103dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginRight="98dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPassword"
+        android:hint="Password"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameText" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
     <Button
         android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="139dp"
+        android:layout_width="97dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="60dp"
+        android:onClick="ForgotPassword"
         android:text="Forgot Password"
-        app:layout_constraintBottom_toTopOf="@+id/SignUpButton"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toStartOf="@+id/LogInButton"
-        app:layout_constraintHorizontal_bias="0.825"
+        app:layout_constraintHorizontal_bias="0.793"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
 
