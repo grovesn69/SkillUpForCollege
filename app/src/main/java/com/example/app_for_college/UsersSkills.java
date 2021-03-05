@@ -58,7 +58,9 @@ public class UsersSkills extends AppCompatActivity {
                     String fullName = userProfile.userName;
                     String email = userProfile.userEmail;
 
+
                     usersName.setText(fullName);        //This can be replicated to put skill names on buttons.
+                    //userEmail.setText(email);
                 }
             }
 

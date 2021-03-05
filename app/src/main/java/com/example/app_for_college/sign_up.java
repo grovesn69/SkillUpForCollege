@@ -69,6 +69,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
         String email2 = AddEmailConfirm.getText().toString().trim();
         String password1 = AddPassword.getText().toString().trim();
         String password2 = AddPasswordConfirm.getText().toString().trim();
+       
 
         if(fullName.isEmpty()){
             FullNameText.setError("Full name is required.");
@@ -121,7 +122,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(fullName, email1);
+                            String userSkills = null; //Ciara: needed to add the Skill as null but will be added after the user progresses
+                            User user = new User(fullName, email1, userSkills);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

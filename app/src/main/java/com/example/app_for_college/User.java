@@ -4,10 +4,15 @@ package com.example.app_for_college;
 
 public class User {
 
-    public String userName, userEmail;
-    public User(String userName, String userEmail){
+//Ciara: added string to user class. This isnt really necessary but could help us down the line
+    public String userName;
+    public String userEmail;
+    public static String userSkill; //user added
+    public User(String userName, String userEmail, String userSkill){
         this.userName = userName;
         this.userEmail = userEmail;
+        User.userSkill = userSkill;
+
     }
     public User(){}
 }
