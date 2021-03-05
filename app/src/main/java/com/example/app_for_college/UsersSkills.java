@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,16 +34,25 @@ public class UsersSkills extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+    Intent in;
 
     //Retrieves user's name and displays it in the top right corner. Retrieval of skills can probably use this method.
     @Override
     protected void onCreate(Bundle savedInstanceState) {            //Gwen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_skills);
-/*        setTitle("Home");
-        Intent i = getIntent();
-        String message = i.getStringExtra("SkillKey");
-        ((TextView)findViewById(R.id.SkillTextOne)).setText(message);*/
+        setTitle("Home");
+        in = getIntent();
+        String message = in.getStringExtra("SkillKey");
+        Button myButton = new Button(this);
+        myButton.setText(message);
+        //myButton.setGravity(Gravity.CENTER);
+        LinearLayout ll = (LinearLayout) findViewById(R.id.buttonlayout);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        ll.addView(myButton,lp);
+
+
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");

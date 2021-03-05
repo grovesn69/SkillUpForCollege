@@ -14,7 +14,9 @@ import com.google.firebase.database.ValueEventListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,24 +29,34 @@ public class AddSkill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_skill);
         setTitle("Add Skill");
-        Intent i = getIntent();
 
+        Spinner dropdown = findViewById(R.id.MetricForX);
+        String[] items = new String[]{"kg", "reps", "km"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+
+       dropdown = findViewById(R.id.MetricForY);
+        items = new String[]{"kg", "reps", "km"};
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+
+        Intent i = getIntent();
     }
 
-    public void GoToHome(View v){
-        Intent i = new Intent(this, GoToHome.class);
-        String message2 = ((EditText)findViewById(R.id.SkillNameText)).getText().toString();
-        i.putExtra("SkillKey", message2);
+    public void UserSkills(View v){
+        Intent i = new Intent(this, UsersSkills.class);
+        String message = ((EditText)findViewById(R.id.SkillNameText)).getText().toString();
+        i.putExtra("SkillKey", message);
         startActivity(i);
 
-        String MetricForY = ((EditText)findViewById(R.id.MetricForY)).getText().toString();
-        String MetricForX = ((EditText)findViewById(R.id.MetricForX)).getText().toString();
+        String MetricForY = ((Spinner)findViewById(R.id.MetricForY)).toString();
+        String MetricForX = ((Spinner)findViewById(R.id.MetricForX)).toString();
         //add a skill to the data base
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference("/skills") ;
 
         DatabaseReference newIssueRef = rootRef.push();
        //newIssueRef.setValue(message2);
-        DatabaseReference metric2Ref = FirebaseDatabase.getInstance().getReference("/skills" + "/" + message2);
+        DatabaseReference metric2Ref = FirebaseDatabase.getInstance().getReference("/skills" + "/" + message);
         metric2Ref.child("metrics").push().setValue(MetricForY);
         metric2Ref.child("metrics").push().setValue(MetricForX);
 
