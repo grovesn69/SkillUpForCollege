@@ -91,8 +91,8 @@ public class UsersSkills extends AppCompatActivity {
     }
     public void SkillData(View v) {                         //Gwen deleted button that leads here. When Niall dynamically creates buttons might go here?
         Intent in = new Intent(this, SkillData.class);
-       // String message = ((EditText) findViewById(R.id.SkillTextOne)).getText().toString();
-       // in.putExtra("Pass", message);
+        String message = ((Button) findViewById(R.id.button2)).getText().toString();
+        in.putExtra("Pass", message);
         startActivity(in);
     }
 }
