@@ -40,9 +40,9 @@ public class SkillData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skill_data);
         Intent i = getIntent();
-        String message = i.getStringExtra("Pass");
+      //  String message = i.getStringExtra("Pass");
 
-        ((TextView)findViewById(R.id.SkillTextView)).setText(message);
+       // ((TextView)findViewById(R.id.SkillTextView)).setText(message);
 
 
         GraphView SkillGraph = (GraphView)findViewById(R.id.SkillGraph);  // Placeholder graph with arbitrary values {DC}
