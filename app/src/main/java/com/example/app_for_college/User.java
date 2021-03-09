@@ -5,9 +5,11 @@ package com.example.app_for_college;
 public class User {
 
     public String userName, userEmail;
-    public User(String userName, String userEmail){
+    public int skillCount;
+    public User(String userName, String userEmail, int skillCount){
         this.userName = userName;
         this.userEmail = userEmail;
+        this.skillCount = skillCount;
     }
     public User(){}
 }
