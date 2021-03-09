@@ -36,9 +36,8 @@ public class UsersSkills extends AppCompatActivity {
     private String userID;
     Intent in;
 
-    //Retrieves user's name and displays it in the top right corner. Retrieval of skills can probably use this method.
     @Override
-    protected void onCreate(Bundle savedInstanceState) {            //Gwen
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_skills);
         setTitle("Home");
@@ -52,8 +51,7 @@ public class UsersSkills extends AppCompatActivity {
         ll.addView(myButton,lp);
 
 
-
-
+        //Retrieves user's name and displays it in the top right corner. Retrieval of skills can probably use this method.
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -89,7 +87,7 @@ public class UsersSkills extends AppCompatActivity {
         Intent i = new Intent(this, AddSkill.class);
         startActivity(i);
     }
-    public void SkillData(View v) {                         //Gwen deleted button that leads here. When Niall dynamically creates buttons might go here?
+    public void SkillData(View v) {                         //Gwen: deleted button that leads here. When Niall dynamically creates buttons might go here?
         Intent in = new Intent(this, SkillData.class);
         String message = ((Button) findViewById(R.id.button2)).getText().toString();
         in.putExtra("Pass", message);
