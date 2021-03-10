@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,6 +21,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 //USE THIS ACTIVITY INSTEAD OF GOTOHOME
 
@@ -77,6 +81,47 @@ public class UsersSkills extends AppCompatActivity {
                 Toast.makeText(UsersSkills.this, "Something went wrong.", Toast.LENGTH_LONG).show();
             }
         });
+
+/*        final ArrayList<String> list = new ArrayList<>();
+        final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.UsersSkills, );
+        DatabaseReference skillsRef = FirebaseDatabase.getInstance().getReference().child("skills");
+        skillsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot skillSnapshot : snapshot.getChildren()){
+                    list.add(skillSnapshot.child("skills").getValue().toString());
+                    Toast.makeText(UsersSkills.this, "list: " + list., Toast.LENGTH_LONG).show();
+                }
+                Toast.makeText(UsersSkills.this, "array list size is " + list.size(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
+/*        final ArrayList<String> skillList = new ArrayList<String>();
+        DatabaseReference skillsRef = FirebaseDatabase.getInstance().getReference().child("skills");
+        skillsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot skillsnap : snapshot.getChildren()){
+                    String skill = (String)skillsnap.getValue();
+                    Toast.makeText(UsersSkills.this, "node " + skill, Toast.LENGTH_LONG).show();
+
+                    if(skill != null){
+                        skillList.add(skillsnap.getKey());
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+        //Toast.makeText(UsersSkills.this, "array list size is " + skillList.size(), Toast.LENGTH_LONG).show();
+
     }
 
     public void Menu(View v){           //Gwen
