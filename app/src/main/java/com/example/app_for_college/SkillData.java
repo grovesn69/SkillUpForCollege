@@ -11,6 +11,8 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +36,11 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class SkillData extends AppCompatActivity {
 
+    private FirebaseUser user;
+    private DatabaseReference metric1;
+    private DatabaseReference metric2;
+    private String userID;
+    private String skillID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,17 @@ public class SkillData extends AppCompatActivity {
         SkillGraph.getViewport().setMaxX(5);
         SkillGraph.getViewport().setXAxisBoundsManual(true);  // Sets bounds to match placeholder series
                                                               //   -> change or remove for actual implementation {DC}
+
+        //Gwen: pulling metrics for this skill down
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+
+/*
+        metric1 = FirebaseDatabase.getInstance().getReference("Users" + "/" + userID + "/skills" + skillID + );
+        metric2 = FirebaseDatabase.getInstance().getReference("Users" + "/" + userID + "/skills" + skillID + );*/
+
+
+
     }
 }
     /*
