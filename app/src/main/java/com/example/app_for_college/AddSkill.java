@@ -59,8 +59,25 @@ public class AddSkill extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void IncrementSkillCount(DatabaseReference reference, String userID){
+    public int SkillCounter(String userID){
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                if (userProfile != null){
+                    int skillCount = userProfile.skillCount;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddSkill.this, "Something went wrong.", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void IncrementSkillCount(DatabaseReference reference, String userID){
+/*        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
@@ -76,7 +93,11 @@ public class AddSkill extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(AddSkill.this, "Something went wrong.", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
+        int count = SkillCounter(userID);
+        count++;
+        DatabaseReference countRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skillCount") ;
+        countRef.setValue(count);
     }
 
     public void UserSkills(View v){
