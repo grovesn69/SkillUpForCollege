@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,20 +26,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//USE THIS ACTIVITY INSTEAD OF GOTOHOME
-
-//I think onCreate can be changed added to where I left comments, to display skills the user put in previously.
-//That might not work for dynamic buttons though.
-//User class probably needs to have something added to handle skills? Atm just holds name and email.
-//Separate method might be needed for displaying skills right after there added, rather when activity is started.
-//Gwen
-
 public class UsersSkills extends AppCompatActivity {
 
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+    private int skillCount;
     Intent in;
+
+    public void PrintList(ArrayList<String> skillList){
+        Log.d("list", skillList.get(1));
+        Log.d("list", skillList.get(1));
+        Log.d("list", skillList.get(2));
+        Log.d("list", skillList.get(3));
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +72,10 @@ public class UsersSkills extends AppCompatActivity {
                 if (userProfile != null){           //This chunk can pull anything stored in a User class from the database.
 
                     String fullName = userProfile.userName;
-                    String email = userProfile.userEmail;
+                    //String email = userProfile.userEmail;
+                    //skillCount = userProfile.skillCount;
 
-                    usersName.setText(fullName);        //This can be replicated to put skill names on buttons.
+                    usersName.setText(fullName);
                 }
             }
 
@@ -101,9 +104,7 @@ public class UsersSkills extends AppCompatActivity {
             }
         });*/
 
-/*        final ArrayList<String> skillList = new ArrayList<String>();
-        DatabaseReference skillsRef = FirebaseDatabase.getInstance().getReference().child("skills");
-        skillsRef.addValueEventListener(new ValueEventListener() {
+/*        skillsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot skillsnap : snapshot.getChildren()){
@@ -122,6 +123,25 @@ public class UsersSkills extends AppCompatActivity {
         });*/
         //Toast.makeText(UsersSkills.this, "array list size is " + skillList.size(), Toast.LENGTH_LONG).show();
 
+/*        final ArrayList<String> skillList = new ArrayList<>();
+        DatabaseReference skillsRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skills");
+        skillsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot skillSnapshot : snapshot.getChildren()){
+                    Skill skill = snapshot.getValue(Skill.class);
+                    String skillName = skill.skillName;     //i dont think a skillName string is being saved, not sure why not
+                    Log.d("list", skillName);           //this line makes the app crash.
+                    skillList.add(skillName);               //the list size is zero, so this isn't working
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("list", "failed");
+            }
+        });
+
+        PrintList(skillList);*/
     }
 
     public void Menu(View v){           //Gwen

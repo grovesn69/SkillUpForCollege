@@ -100,14 +100,19 @@ public class AddSkill extends AppCompatActivity {
         String text = MetricForX.getSelectedItem().toString();
         Spinner MetricForY = ((Spinner)findViewById(R.id.MetricForX));
         String text2 = MetricForY.getSelectedItem().toString();
+
+        //Gwen: replaced skill addition. We need to add them as objects, to be able to retrieve them.
+        Skill skill = new Skill(message, text, text2);
+        FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skills").push().setValue(skill);
+
+
        // String MetricForX = ((EditText)findViewById(R.id.MetricForX)).getText().toString();
 
         //String MetricForY = ((EditText)findViewById(R.id.MetricForY)).getText().toString();
        // String MetricForX = ((EditText)findViewById(R.id.MetricForX)).getText().toString();
-
+/*
         //Ciara: add skill to the class
        // User.userSkill =  message2 ;
-
         //Ciara: add a skill to the data base
 //        DatabaseReference rootRef1 = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skills") ;
 //        DatabaseReference newIssueRef1 = rootRef1.push();
@@ -121,22 +126,7 @@ public class AddSkill extends AppCompatActivity {
         metric2Ref.child("metric2").setValue(text2);
 
         //Gwen: add to skill count
-        IncrementSkillCount();
-/*        DatabaseReference skillCountRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skillCount");
-        skillCountRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                skillCountString = snapshot.getKey();
-                skillCount = Integer.parseInt(skillCountString);
-                skillCount++;
-                skillCountRef.setValue(skillCount);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
+        IncrementSkillCount(); */
 
         //WHEN THE SKILL ADDING IS HANDLED IN DATABASE CALLS - an onCompleteListener can be added similar to below,
             //when the function is called in this class
@@ -157,6 +147,7 @@ public class AddSkill extends AppCompatActivity {
                     Toast.makeText(AddSkill.this, "Failed to add skill. Please try again.", Toast.LENGTH_LONG).show();
                 }
             }
-        });*/
+        });
+        IncrementSkillCount();*/
     }
 }
