@@ -99,12 +99,8 @@ public class UsersSkills extends AppCompatActivity {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){           //This chunk can pull anything stored in a User class from the database.
-
                     String fullName = userProfile.userName;
-                    //String email = userProfile.userEmail;
-                    //skillCount = userProfile.skillCount;
-
-                    usersName.setText(fullName);
+                    usersName.setText(fullName);            //Sets the TextView to the user's name.
                 }
             }
 
@@ -152,6 +148,7 @@ public class UsersSkills extends AppCompatActivity {
         });*/
         //Toast.makeText(UsersSkills.this, "array list size is " + skillList.size(), Toast.LENGTH_LONG).show();
 
+        //Gwen: This is the latest attempt. I don't understand why it's not working.
 /*        final ArrayList<String> skillList = new ArrayList<>();
         DatabaseReference skillsRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skills");
         skillsRef.addValueEventListener(new ValueEventListener() {
