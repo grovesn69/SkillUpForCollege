@@ -40,7 +40,34 @@ public class SkillData extends AppCompatActivity {
     private DatabaseReference metric1;
     private DatabaseReference metric2;
     private String userID;
-    private String skillID;
+
+
+    //I think this will work when we figure out how to pass skillID here,
+    // or how to label the skill with it's name and then pass the name here.
+    public void MetricHandling(){
+/*        user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+        //need to get skillID somehow
+
+        final TextView metric1View = (TextView) findViewById(R.id.metric1display);
+        final TextView metric2View = (TextView) findViewById(R.id.metric2display);
+
+        DatabaseReference skillRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skills" + skillID);
+        skillRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Skill skill = snapshot.getValue(Skill.class);
+                String metric1 = skill.metric1;
+                String metric2 = skill.metric2;
+                metric1View.setText(metric1);
+                metric2View.setText(metric2);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("metric", "failed");
+            }
+        });*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +91,7 @@ public class SkillData extends AppCompatActivity {
         SkillGraph.getViewport().setMaxX(5);
         SkillGraph.getViewport().setXAxisBoundsManual(true);  // Sets bounds to match placeholder series
                                                               //   -> change or remove for actual implementation {DC}
-
-        //Gwen: pulling metrics for this skill down
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        userID = user.getUid();
-
-/*
-        metric1 = FirebaseDatabase.getInstance().getReference("Users" + "/" + userID + "/skills" + skillID + );
-        metric2 = FirebaseDatabase.getInstance().getReference("Users" + "/" + userID + "/skills" + skillID + );*/
-
-
-
+//        MetricHandling();
     }
 }
     /*
