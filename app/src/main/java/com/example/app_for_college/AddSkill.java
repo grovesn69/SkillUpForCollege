@@ -33,8 +33,6 @@ public class AddSkill extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
-    private String skillCountString;            //Gwen
-    private int skillCount;                     //Gwen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +57,9 @@ public class AddSkill extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void IncrementSkillCount(DatabaseReference reference, String userID){
+    //Gwen: this method is called when a new skill is added to increment the count of how many
+    //skills the user has.
+    public void IncrementSkillCount(){
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -71,12 +71,19 @@ public class AddSkill extends AppCompatActivity {
                     countRef.setValue(skillCount);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(AddSkill.this, "Something went wrong.", Toast.LENGTH_LONG).show();
             }
         });
+
+        //Here I am attempting to use DatabaseCallsClass method to retrieve the skill count
+        //I have spent ages on it and I can't get it to work.
+ /*       DatabaseCallsClass dbcalls = new DatabaseCallsClass();
+        int count = dbcalls.SkillCount(userID);
+        count++;
+        DatabaseReference countRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skillCount") ;
+        countRef.setValue(count);*/
     }
 
     public void UserSkills(View v){
@@ -114,7 +121,7 @@ public class AddSkill extends AppCompatActivity {
         metric2Ref.child("metric2").setValue(text2);
 
         //Gwen: add to skill count
-        IncrementSkillCount(reference, userID);
+        IncrementSkillCount();
 /*        DatabaseReference skillCountRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skillCount");
         skillCountRef.addValueEventListener(new ValueEventListener() {
             @Override
