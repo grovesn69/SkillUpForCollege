@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 //USE THIS ACTIVITY INSTEAD OF GOTOHOME
 
 //I think onCreate can be changed added to where I left comments, to display skills the user put in previously.
@@ -35,24 +38,37 @@ public class UsersSkills extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
     Intent in;
+    ArrayList<String> skills;
 
-    //Retrieves user's name and displays it in the top right corner. Retrieval of skills can probably use this method.
     @Override
-    protected void onCreate(Bundle savedInstanceState) {            //Gwen
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_skills);
         setTitle("Home");
+        skills = new ArrayList<>();
         in = getIntent();
-        String message = in.getStringExtra("SkillKey");
-        Button myButton = new Button(this);
-        myButton.setText(message);
-        //myButton.setGravity(Gravity.CENTER);
-        LinearLayout ll = (LinearLayout) findViewById(R.id.buttonlayout);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        ll.addView(myButton,lp);
+        //String message = in.getStringExtra("SkillKey");
+        //skills.add(message);
+        skills.add("Jumping"); //hard coded skills
+        skills.add("Drumming");
+        skills.add("Passing");
+        skills.add("Shooting");
+        for(int x =0; x<skills.size(); x++){     //Loop to create dynamic buttons
+            Button myButton = new Button(this);
+            String skill = skills.get(x);
+            myButton.setText(skill);
+            myButton.setBackgroundColor(Color.GRAY);
+            myButton.setTextColor(Color.YELLOW);
+            LinearLayout ll = (LinearLayout) findViewById(R.id.buttonlayout);
 
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0, 10, 0, 10);
+            myButton.setLayoutParams(params);
 
+            ll.addView(myButton,params);
 
+            myButton.setOnClickListener(handleOnClick(myButton));
+        }
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -81,6 +97,17 @@ public class UsersSkills extends AppCompatActivity {
         });
     }
 
+    View.OnClickListener handleOnClick(final Button myButton) {
+        return new View.OnClickListener() {
+            public void onClick(View v) {
+                String message = myButton.getText().toString();
+                Intent in = new Intent(UsersSkills.this, SkillData.class);
+                in.putExtra("Pass", message);
+                startActivity(in);
+            }
+        };
+    }
+
     public void Menu(View v){           //Gwen
         Intent i = new Intent(this, Menu.class);
         startActivity(i);
@@ -89,10 +116,5 @@ public class UsersSkills extends AppCompatActivity {
         Intent i = new Intent(this, AddSkill.class);
         startActivity(i);
     }
-    public void SkillData(View v) {                         //Gwen deleted button that leads here. When Niall dynamically creates buttons might go here?
-        Intent in = new Intent(this, SkillData.class);
-        String message = ((Button) findViewById(R.id.button2)).getText().toString();
-        in.putExtra("Pass", message);
-        startActivity(in);
-    }
+
 }
