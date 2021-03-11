@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -59,7 +60,7 @@ public class UsersSkills extends AppCompatActivity {
 
         //Retrieves user's name and displays it in the top right corner. Retrieval of skills can probably use this method.
         user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference = FirebaseDatabase.getInstance().getReference("/Users");
         userID = user.getUid();
 
         final TextView usersName = (TextView) findViewById(R.id.ProfileNameText);
@@ -80,6 +81,8 @@ public class UsersSkills extends AppCompatActivity {
                 Toast.makeText(UsersSkills.this, "Something went wrong.", Toast.LENGTH_LONG).show();
             }
         });
+
+
 
 /*        final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.UsersSkills, );

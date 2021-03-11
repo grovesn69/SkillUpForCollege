@@ -37,6 +37,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class SkillData extends AppCompatActivity {
 
     private FirebaseUser user;
+    private DatabaseReference reference;
     private DatabaseReference metric1;
     private DatabaseReference metric2;
     private String userID;
@@ -92,6 +93,26 @@ public class SkillData extends AppCompatActivity {
         SkillGraph.getViewport().setXAxisBoundsManual(true);  // Sets bounds to match placeholder series
                                                               //   -> change or remove for actual implementation {DC}
 //        MetricHandling();
+        UserMetricData();
+    }
+//}
+
+
+    public void UserMetricData() {
+
+        String met1 = ((EditText)findViewById(R.id.editTextTextPersonName)).getText().toString();
+        String met2 = ((EditText)findViewById(R.id.editTextTextPersonName2)).getText().toString();
+
+        String text3 = ((TextView)findViewById(R.id.SkillTextView)).getText().toString(); //this should be whatever skill is chosen
+        user = FirebaseAuth.getInstance().getCurrentUser(); //get current user
+        reference = FirebaseDatabase.getInstance().getReference("/Users");
+        userID = user.getUid(); //get current user ID
+
+        //Ciara: add metrics
+        DatabaseReference metRef = FirebaseDatabase.getInstance().getReference("/Users" + "/" + userID + "/skills/new");
+       // DatabaseReference newMetRef = metRef.push();
+        metRef.child("metric1").setValue(met1);
+        metRef.child("metric2").setValue(met2);
     }
 }
     /*
