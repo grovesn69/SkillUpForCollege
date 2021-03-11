@@ -6,66 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--Displays logo in background  {DC}-->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/LogInButton"
         android:layout_width="98dp"
         android:layout_height="63dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="68dp"
         android:onClick="LogInMain"
         android:text="Log In"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toTopOf="@+id/SignUpButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.693"
+        app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/SignUpButton"
         android:layout_width="128dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="344dp"
         android:onClick="Sign_up"
         android:text="Sign Up"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassword"
+        app:layout_constraintVertical_bias="0.278" />
 
     <EditText
         android:id="@+id/EmailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="216dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/PasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailText" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/forgotPassword"
         android:layout_width="97dp"
         android:layout_height="64dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="68dp"
         android:onClick="ForgotPassword"
         android:text="Forgot Password"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toStartOf="@+id/LogInButton"
-        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
 
