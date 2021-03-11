@@ -16,7 +16,8 @@
         <activity android:name=".SkillData" />
         <activity android:name=".AddSkill" />
         <activity android:name=".GoToHome" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+                  android:screenOrientation="portrait"> <!--Prevents app from rotating on this screen - for the moment it only really works in portrait {DC}-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
